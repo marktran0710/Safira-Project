@@ -1,0 +1,15 @@
+@import"flex";
+@import"media";
+@import"gridSafira";
+@import"mixin";
+@import"color";
+@import"distances";
+@import"fonts";
+.container {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+.header__ware {
+    background-color: #40a944;
+}

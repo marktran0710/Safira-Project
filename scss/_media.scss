@@ -1,0 +1,34 @@
+//xs<576px
+//sm>576px
+//md>768x
+//lg>992px
+//xl>1200px
+@mixin xs() {
+    @media (max-width: 576px) {
+        @content;
+    }
+}
+
+@mixin sm () {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin md () {
+    @media (max-width: 992px) {
+        @content;
+    }
+}
+
+@mixin lg() {
+    @media (max-width: 1140px) {
+        @content;
+    }
+}
+
+@mixin xl () {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}

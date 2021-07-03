@@ -1,0 +1,8 @@
+@mixin nav-child( $wid, $padtb, $padlf, $percent) {
+    width: $wid;
+    right: -$wid;
+    padding: $padtb $padlf;
+    li {
+        width: $percent;
+    }
+}

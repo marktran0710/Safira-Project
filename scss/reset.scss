@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; //chieu dai element bao gom border
+}
+
+// reset lại các thuộc tính cơ bản của thẻ a đó là underline
+a {
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none; // reset lại css mặc định của ul ol
+}
+
+input,
+button {
+    border: none;
+    outline: none;
+    background: none;
+}

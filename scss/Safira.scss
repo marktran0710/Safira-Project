@@ -1,0 +1,1951 @@
+            @import"flex";
+            @import"media";
+            @import"gridSafira";
+            @import"mixin";
+            @import"color";
+            @import"distances";
+            @import"fonts";
+            @import"responsive";
+            @mixin cssItem {
+                .wrap-product {
+                    &:hover {
+                        .sticker-status {
+                            transform: translateY(-35px);
+                            opacity: 1 !important;
+                        }
+                    }
+                    .owl-nav {
+                        button {
+                            position: absolute;
+                            top: 25%;
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 50%;
+                            display: none;
+                            align-items: center;
+                            justify-content: center;
+                            transition: all 0.3s;
+                            span {
+                                font-size: 40px;
+                                font-weight: 500;
+                                color: black;
+                                transition: all 0.3s;
+                            }
+                        }
+                        button.owl-prev {
+                            left: -60px;
+                            background-color: rgba(0, 0, 0, 0);
+                            transition: all 0.3s;
+                        }
+                        button.owl-next {
+                            right: -60px;
+                            background-color: rgba(0, 0, 0, 0);
+                            transition: all 0.3s;
+                        }
+                        button.owl-prev:not(.disabled):hover {
+                            background-color: $orange-color;
+                            span {
+                                color: white;
+                            }
+                        }
+                        button.owl-next:not(.disabled):hover {
+                            background-color: $orange-color;
+                            span {
+                                color: white;
+                            }
+                        }
+                    }
+                    .wrap-img {
+                        position: relative;
+                        .sale-icon {
+                            position: absolute;
+                            top: 10px;
+                            left: 10px;
+                            height: 40px;
+                            width: 40px;
+                            font-size: 14px;
+                            background-color: $orange-color;
+                            border-radius: 50%;
+                            color: white;
+                        }
+                        .sticker-status {
+                            background-color: white;
+                            position: absolute;
+                            left: 20%;
+                            bottom: 0px;
+                            border-radius: 20px;
+                            background-color: white;
+                            justify-content: space-around;
+                            transition: all 0.2s;
+                            opacity: 0;
+                            button {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                height: 30px;
+                                width: 30px;
+                                cursor: pointer;
+                                border-radius: 50%;
+                                transition: all 0.4s;
+                                &:hover {
+                                    background-color: $orange-color;
+                                }
+                            }
+                        }
+                    }
+                    .wrap-content {
+                        text-align: center;
+                        a {
+                            color: #222;
+                            display: block;
+                            &:hover {
+                                color: $orange-color;
+                            }
+                        }
+                        .info {
+                            margin: 10px 0;
+                        }
+                        span {
+                            display: block;
+                        }
+                        .price {
+                            color: $orange-color;
+                            display: inline-block;
+                            font-weight: 800;
+                            margin-left: 5px;
+                        }
+                        .cost {
+                            text-decoration: line-through;
+                            display: inline-block;
+                            color: #555;
+                        }
+                    }
+                }
+            }
+            
+            .container {
+                max-width: 1110px;
+                margin: 0 auto;
+            }
+            
+            body {
+                font-family: 'Roboto', sans-serif;
+                scroll-behavior: smooth;
+            }
+            
+            .img-logo {
+                max-width: 118px;
+            }
+            
+            .p-relative {
+                position: relative;
+            }
+            
+            .p-absolute {
+                position: absolute
+            }
+            
+            .h-100 {
+                height: 100vh;
+            }
+            
+            .p-fixed {
+                position: fixed;
+            }
+            
+            .c-pointer {
+                cursor: pointer;
+            }
+            
+            .header__ware {
+                z-index: 30;
+                width: 100%;
+                background-color: white;
+                position: fixed;
+                padding: 15px 0;
+                .container {
+                    top: 0;
+                    left: 0;
+                    .header__ware--logo {
+                        img {
+                            max-width: 118px;
+                        }
+                    }
+                    .header__ware--nav {
+                        .wrap__header--ware {
+                            font-family: Work Sans, Arial, Helvetica, sans-serif;
+                            .horizen-nav {
+                                ul {
+                                    li {
+                                        position: relative;
+                                        z-index: 50;
+                                        margin-right: 30px;
+                                        a {
+                                            span {
+                                                &:first-child {
+                                                    font-size: 15px;
+                                                    font-weight: bolder;
+                                                }
+                                                i {
+                                                    font-size: 10px;
+                                                }
+                                            }
+                                            color: #222;
+                                            padding-bottom: 20px;
+                                            &:hover {
+                                                color: $orange-color;
+                                            }
+                                        }
+                                        &:hover {
+                                            .dropdown {
+                                                display: block;
+                                            }
+                                        }
+                                        .dropdown {
+                                            position: absolute;
+                                            background-color: white;
+                                            width: 480px;
+                                            height: auto;
+                                            z-index: 9000;
+                                            left: 0;
+                                            top: 39px;
+                                            display: none;
+                                            box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.02);
+                                            border: 1px solid $gray-border;
+                                            ul.father {
+                                                padding: 35px 35px 12px 35px;
+                                                li {
+                                                    margin-right: 0;
+                                                    width: 50%;
+                                                    span.demo {
+                                                        display: inline-block;
+                                                        margin-bottom: 12px;
+                                                        cursor: default;
+                                                    }
+                                                    .child {
+                                                        font-size: 14.5px;
+                                                        font-weight: 400;
+                                                        >li {
+                                                            width: 100%;
+                                                            >a {
+                                                                color: #646464;
+                                                                display: block;
+                                                                padding: 15px 0;
+                                                                &:hover {
+                                                                    color: $orange-color;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .shop {
+                                            left: -88px;
+                                            width: 500px;
+                                        }
+                                        .blog {
+                                            left: -168px;
+                                            width: 500px;
+                                        }
+                                        .pages {
+                                            width: 225px;
+                                            .father {
+                                                li {
+                                                    width: 100% !important;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .slider {
+                                position: relative;
+                                margin-top: 20px;
+                                font-family: Work Sans, Arial, Helvetica, sans-serif;
+                                .owl-carousel {
+                                    .item {
+                                        .wrap-content-slider {
+                                            width: 350px;
+                                            position: absolute;
+                                            left: 50px;
+                                            top: 100px;
+                                            h1 {
+                                                font-size: 48px;
+                                                font-weight: 800;
+                                            }
+                                            p {
+                                                margin: 35px 0;
+                                                // animation: animationSliderInfo 15s infinite;
+                                            }
+                                            button {
+                                                // animation: animationSliderBtn 15s infinite;
+                                                padding: 10px 20px;
+                                                border-radius: 50px;
+                                                background-color: $orange-color;
+                                                a {
+                                                    color: white;
+                                                    font-weight: 700;
+                                                }
+                                                &:hover {
+                                                    background-color: black;
+                                                }
+                                            }
+                                        }
+                                        @keyframes animationSlider {
+                                            0% {
+                                                opacity: 0;
+                                                transform: scale(0);
+                                                display: none;
+                                            }
+                                            10% {
+                                                opacity: 0;
+                                                transform: scale(1.0);
+                                            }
+                                            20% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            50% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            75% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            80% {
+                                                opacity: 0;
+                                                transform: scale(1);
+                                            }
+                                            100% {
+                                                opacity: 0;
+                                                transform: scale(0);
+                                            }
+                                        }
+                                        @keyframes animationSliderInfo {
+                                            0% {
+                                                opacity: 0;
+                                                transform: scale(0);
+                                                display: none;
+                                            }
+                                            20% {
+                                                opacity: 0;
+                                                transform: scale(1.0);
+                                            }
+                                            30% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            50% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            85% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            90% {
+                                                opacity: 0;
+                                                transform: scale(1);
+                                            }
+                                            100% {
+                                                opacity: 0;
+                                                transform: scale(0);
+                                            }
+                                        }
+                                        @keyframes animationSliderBtn {
+                                            0% {
+                                                opacity: 0;
+                                                transform: scale(0);
+                                                display: none;
+                                            }
+                                            30% {
+                                                opacity: 0;
+                                                transform: scale(1.0);
+                                            }
+                                            40% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            50% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            85% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            90% {
+                                                opacity: 0;
+                                                transform: scale(1);
+                                            }
+                                            100% {
+                                                opacity: 0;
+                                                transform: scale(0);
+                                            }
+                                        }
+                                    }
+                                    .owl-item.active {
+                                        .item {
+                                            .wrap-content-slider {
+                                                h1 {
+                                                    animation: animationSlider 10s forwards;
+                                                }
+                                                p {
+                                                    animation: animationSliderInfo 10s forwards;
+                                                }
+                                                button {
+                                                    animation: animationSliderBtn 10s forwards;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .owl-dots {
+                                        position: absolute;
+                                        bottom: 0;
+                                        left: 50%;
+                                        button.owl-dot {
+                                            span {
+                                                width: 15px;
+                                                height: 15px;
+                                                border: 2px solid $orange-color;
+                                                background: none;
+                                                // &:hover {
+                                                //     background-color: $orange-color;
+                                                // }
+                                            }
+                                        }
+                                        button.owl-dot.active {
+                                            span {
+                                                background-color: $orange-color;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .auth-and-cart {
+                        margin-right: 30px;
+                    }
+                }
+            }
+            
+            .totop {
+                position: fixed;
+                z-index: 20;
+                bottom: 20px;
+                right: 20px;
+                transform: translateY(100px);
+                background-color: black;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                transition: all 0.3s;
+                cursor: pointer;
+                a {
+                    i {
+                        color: white;
+                    }
+                }
+                &:hover {
+                    background-color: $orange-color;
+                    border: 1px solid $orange-color;
+                }
+                &.fixed {
+                    transform: translateY(0);
+                }
+            }
+            
+            header {
+                border-bottom: 1px solid #e7e7e7;
+                .container {
+                    font-family: Work Sans, Arial, Helvetica, sans-serif;
+                    align-items: center;
+                    .header-social-network {
+                        margin-left: -7.5px;
+                        ul {
+                            li {
+                                a {
+                                    margin: 10px 10px;
+                                    i {
+                                        color: #555;
+                                        font-size: 14px;
+                                    }
+                                    &:hover {
+                                        i {
+                                            color: #40a944;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .header-right {
+                        >ul {
+                            color: #555;
+                            li {
+                                span {
+                                    cursor: pointer;
+                                }
+                                padding: 10px 0;
+                                font-size: 16px;
+                            }
+                            ul.dropdown {
+                                li {
+                                    padding: 10px 10px;
+                                    a {
+                                        color: #555;
+                                        &:hover {
+                                            color: #40a944;
+                                        }
+                                    }
+                                }
+                                li {
+                                    &:first-child {
+                                        border-bottom: 1px solid #e7e7e7;
+                                    }
+                                }
+                            }
+                            .first {
+                                position: relative;
+                                ul.lang {
+                                    width: 200px;
+                                    display: none;
+                                    box-sizing: content-box;
+                                    position: absolute;
+                                    z-index: 12;
+                                    background-color: white;
+                                    border: 1px solid #e7e7e7;
+                                    transform: translate(-125px, 10px);
+                                }
+                            }
+                            i {
+                                font-size: 10px;
+                                font-weight: 600;
+                                margin-left: 5px;
+                            }
+                            .last {
+                                position: relative;
+                                ul.curren {
+                                    width: 200px;
+                                    display: none;
+                                    background-color: white;
+                                    box-sizing: content-box;
+                                    z-index: 2;
+                                    position: absolute;
+                                    border: 1px solid #e7e7e7;
+                                    transform: translate(-110px, 10px);
+                                }
+                            }
+                            span.stripe {
+                                margin-left: 10px;
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            main {
+                .container {
+                    .header-main {
+                        overflow: visible;
+                        margin-top: 30px;
+                        margin-bottom: 15px;
+                        .logo {
+                            img {
+                                max-width: 118px;
+                                ;
+                            }
+                        }
+                        .search-box {
+                            border-radius: 20px;
+                            padding-left: 10px;
+                            .wrap-search-box {
+                                border: 1px solid #e7e7e7;
+                                border-radius: 25px;
+                                .scrollable-menu {
+                                    ul.menu {
+                                        border: 1px solid rgba($color: #333, $alpha: 0.1);
+                                        height: auto;
+                                        width: 230px;
+                                        max-height: 200px;
+                                        overflow-x: hidden;
+                                        background-color: white;
+                                        z-index: 10;
+                                        li {
+                                            a {
+                                                color: #999;
+                                            }
+                                        }
+                                    }
+                                }
+                                .filter {
+                                    background-color: #f3f3f3;
+                                    border-top-left-radius: 25px;
+                                    border-bottom-left-radius: 25px;
+                                    padding: 15px 30px;
+                                    cursor: pointer;
+                                    transition: all 0.4s;
+                                    span {
+                                        font-weight: 400;
+                                        color: #222;
+                                    }
+                                    i {
+                                        margin-left: 5px;
+                                        font-size: 10px;
+                                    }
+                                    &:hover {
+                                        background-color: $orange-color;
+                                    }
+                                }
+                                input {
+                                    padding: 10px 20px;
+                                    border-left: none;
+                                    border-right: none;
+                                    font-size: 16px;
+                                    width: 390px;
+                                }
+                                input.search:focus::-webkit-input-placeholder {
+                                    color: transparent;
+                                }
+                                .button-search {
+                                    font-size: 20px;
+                                    align-items: center;
+                                    justify-content: center;
+                                    display: flex;
+                                    width: 12%;
+                                    background-color: $orange-color;
+                                    border-top-right-radius: 25px;
+                                    border-bottom-right-radius: 25px;
+                                }
+                            }
+                        }
+                    }
+                    .nav-and-slider {
+                        .left {
+                            overflow: visible;
+                            font-family: Work Sans, Arial, Helvetica, sans-serif;
+                            .vertical-nav {
+                                border: 1px solid $gray-border;
+                                .title-nav {
+                                    padding: 15px 30px;
+                                    background-color: $orange-color;
+                                    color: white;
+                                    position: relative;
+                                    .title {
+                                        margin-left: 10px;
+                                        font-size: 15px;
+                                    }
+                                    span.down {
+                                        position: absolute;
+                                        top: 40%;
+                                        font-size: 10px;
+                                        right: 30px;
+                                    }
+                                }
+                                ul.list-content {
+                                    padding-top: 12px;
+                                    li {
+                                        span.format-child {
+                                            display: block;
+                                            width: 100%;
+                                            cursor: pointer;
+                                            padding: 12px 30px;
+                                        }
+                                        color: #222;
+                                        font-size: 13.5px;
+                                        position: relative;
+                                        span.icon-nav {
+                                            position: absolute;
+                                            top: 35%;
+                                            right: 30px;
+                                            color: #555;
+                                            font-size: 10px;
+                                        }
+                                        &:hover {
+                                            color: $orange-color;
+                                            span {
+                                                color: $orange-color;
+                                            }
+                                            ul.healthy,
+                                            ul.marrow,
+                                            ul.allium,
+                                            ul.vitamins,
+                                            ul.chickpea {
+                                                display: flex;
+                                            }
+                                        }
+                                    }
+                                    ul.dropright {
+                                        position: absolute;
+                                        background-color: white;
+                                        border: 1px solid #e7e7e7;
+                                        display: none;
+                                        z-index: 8;
+                                        flex-wrap: wrap;
+                                        top: 0;
+                                        li {
+                                            margin-bottom: 30px;
+                                            a {
+                                                color: #222;
+                                                &:hover {
+                                                    color: $orange-color;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ul.healthy {
+                                        @include nav-child(500px, 40px, 40px, 50%);
+                                    }
+                                    ul.marrow,
+                                    ul.allium {
+                                        @include nav-child(670px, 40px, 40px, 33.333%);
+                                    }
+                                    ul.vitamins {
+                                        @include nav-child(460px, 40px, 40px, 50%);
+                                    }
+                                    ul.chickpea {
+                                        li {
+                                            padding: 20px 0 !important;
+                                            margin-bottom: 0;
+                                            border-bottom: 1px solid #e7e7e7;
+                                        }
+                                        @include nav-child(206px, 0px, 15px, 100%);
+                                    }
+                                }
+                            }
+                        }
+                        .right {
+                            margin-top: 20px;
+                            font-family: Work Sans, Arial, Helvetica, sans-serif;
+                            .wrap-item {
+                                @include cssItem();
+                            }
+                            .horizen-nav {
+                                ul {
+                                    >li {
+                                        position: relative;
+                                        margin-right: 30px;
+                                        a {
+                                            span {
+                                                &:first-child {
+                                                    font-size: 15px;
+                                                    font-weight: bolder;
+                                                }
+                                                i {
+                                                    font-size: 10px;
+                                                }
+                                            }
+                                            color: #222;
+                                            padding-bottom: 20px;
+                                            &:hover {
+                                                color: $orange-color;
+                                            }
+                                        }
+                                        &:hover {
+                                            .dropdown {
+                                                display: block;
+                                            }
+                                        }
+                                        .dropdown {
+                                            position: absolute;
+                                            z-index: 8;
+                                            width: 480px;
+                                            left: 0;
+                                            top: 39px;
+                                            display: none;
+                                            background-color: white;
+                                            box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.02);
+                                            border: 1px solid $gray-border;
+                                            ul.father {
+                                                padding: 35px 35px 12px 35px;
+                                                li {
+                                                    margin-right: 0;
+                                                    width: 50%;
+                                                    span.demo {
+                                                        display: inline-block;
+                                                        margin-bottom: 12px;
+                                                        cursor: default;
+                                                    }
+                                                    .child {
+                                                        font-size: 14.5px;
+                                                        font-weight: 400;
+                                                        >li {
+                                                            width: 100%;
+                                                            >a {
+                                                                color: #646464;
+                                                                display: block;
+                                                                padding: 15px 0;
+                                                                &:hover {
+                                                                    color: $orange-color;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .shop {
+                                            left: -88px;
+                                            width: 500px;
+                                        }
+                                        .blog {
+                                            left: -168px;
+                                            width: 500px;
+                                        }
+                                        .pages {
+                                            width: 225px;
+                                            .father {
+                                                li {
+                                                    width: 100% !important;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .slider {
+                                position: relative;
+                                margin-top: 20px;
+                                font-family: Work Sans, Arial, Helvetica, sans-serif;
+                                .owl-carousel {
+                                    .item {
+                                        .wrap-content-slider {
+                                            width: 350px;
+                                            position: absolute;
+                                            left: 50px;
+                                            top: 100px;
+                                            h1 {
+                                                font-size: 48px;
+                                                font-weight: 800;
+                                            }
+                                            p {
+                                                margin: 35px 0;
+                                                // animation: animationSliderInfo 15s infinite;
+                                            }
+                                            button {
+                                                // animation: animationSliderBtn 15s infinite;
+                                                padding: 10px 20px;
+                                                border-radius: 50px;
+                                                background-color: $orange-color;
+                                                a {
+                                                    color: white;
+                                                    font-weight: 700;
+                                                }
+                                                &:hover {
+                                                    background-color: black;
+                                                }
+                                            }
+                                        }
+                                        @keyframes animationSlider {
+                                            0% {
+                                                opacity: 0;
+                                                transform: scale(0);
+                                                display: none;
+                                            }
+                                            10% {
+                                                opacity: 0;
+                                                transform: scale(1.0);
+                                            }
+                                            20% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            50% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            75% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            80% {
+                                                opacity: 0;
+                                                transform: scale(1);
+                                            }
+                                            100% {
+                                                opacity: 0;
+                                                transform: scale(0);
+                                            }
+                                        }
+                                        @keyframes animationSliderInfo {
+                                            0% {
+                                                opacity: 0;
+                                                transform: scale(0);
+                                                display: none;
+                                            }
+                                            20% {
+                                                opacity: 0;
+                                                transform: scale(1.0);
+                                            }
+                                            30% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            50% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            85% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            90% {
+                                                opacity: 0;
+                                                transform: scale(1);
+                                            }
+                                            100% {
+                                                opacity: 0;
+                                                transform: scale(0);
+                                            }
+                                        }
+                                        @keyframes animationSliderBtn {
+                                            0% {
+                                                opacity: 0;
+                                                transform: scale(0);
+                                                display: none;
+                                            }
+                                            30% {
+                                                opacity: 0;
+                                                transform: scale(1.0);
+                                            }
+                                            40% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            50% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            85% {
+                                                opacity: 1;
+                                                transform: scale(1.05);
+                                            }
+                                            90% {
+                                                opacity: 0;
+                                                transform: scale(1);
+                                            }
+                                            100% {
+                                                opacity: 0;
+                                                transform: scale(0);
+                                            }
+                                        }
+                                    }
+                                    .owl-item.active {
+                                        .item {
+                                            .wrap-content-slider {
+                                                h1 {
+                                                    animation: animationSlider 10s forwards;
+                                                }
+                                                p {
+                                                    animation: animationSliderInfo 10s forwards;
+                                                }
+                                                button {
+                                                    animation: animationSliderBtn 10s forwards;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .owl-dots {
+                                        position: absolute;
+                                        bottom: 0;
+                                        left: 50%;
+                                        button.owl-dot {
+                                            span {
+                                                width: 15px;
+                                                height: 15px;
+                                                border: 2px solid $orange-color;
+                                                background: none;
+                                                // &:hover {
+                                                //     background-color: $orange-color;
+                                                // }
+                                            }
+                                        }
+                                        button.owl-dot.active {
+                                            span {
+                                                background-color: $orange-color;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .services-safira {
+                        font-family: Work Sans, Arial, Helvetica, sans-serif;
+                        padding: 100px 0;
+                        .card-inf {
+                            text-align: center;
+                            .icon-service {
+                                i {
+                                    font-size: 30px;
+                                    color: $orange-color;
+                                }
+                            }
+                            .content-service {
+                                h3 {
+                                    margin: 20px 0 10px 0;
+                                    font-size: 16px;
+                                }
+                                span {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+                    .new-products {
+                        font-family: Work Sans, Arial, Helvetica, sans-serif;
+                        .title {
+                            margin-right: 10px;
+                            margin-bottom: 20px;
+                            color: #222;
+                            font-weight: 600;
+                            ul {
+                                li {
+                                    margin-left: 50px;
+                                    a {
+                                        color: #222;
+                                        &:hover {
+                                            color: $orange-color;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .content-products {
+                            .owl-carousel {
+                                &:hover {
+                                    .owl-nav {
+                                        button {
+                                            display: flex;
+                                        }
+                                    }
+                                }
+                                .item {}
+                                .wrap-product {
+                                    &:hover {
+                                        .sticker-status {
+                                            transform: translateY(-35px);
+                                            opacity: 1 !important;
+                                        }
+                                    }
+                                    .owl-nav {
+                                        button {
+                                            position: absolute;
+                                            top: 25%;
+                                            width: 60px;
+                                            height: 60px;
+                                            border-radius: 50%;
+                                            display: none;
+                                            align-items: center;
+                                            justify-content: center;
+                                            transition: all 0.3s;
+                                            span {
+                                                font-size: 40px;
+                                                font-weight: 500;
+                                                color: black;
+                                                transition: all 0.3s;
+                                            }
+                                        }
+                                        button.owl-prev {
+                                            left: -60px;
+                                            background-color: rgba(0, 0, 0, 0);
+                                            transition: all 0.3s;
+                                        }
+                                        button.owl-next {
+                                            right: -60px;
+                                            background-color: rgba(0, 0, 0, 0);
+                                            transition: all 0.3s;
+                                        }
+                                        button.owl-prev:not(.disabled):hover {
+                                            background-color: $orange-color;
+                                            span {
+                                                color: white;
+                                            }
+                                        }
+                                        button.owl-next:not(.disabled):hover {
+                                            background-color: $orange-color;
+                                            span {
+                                                color: white;
+                                            }
+                                        }
+                                    }
+                                    .wrap-img {
+                                        position: relative;
+                                        .sale-icon {
+                                            position: absolute;
+                                            top: 10px;
+                                            left: 10px;
+                                            height: 40px;
+                                            width: 40px;
+                                            font-size: 14px;
+                                            background-color: $orange-color;
+                                            border-radius: 50%;
+                                            color: white;
+                                        }
+                                        .sticker-status {
+                                            background-color: white;
+                                            position: absolute;
+                                            left: 20%;
+                                            bottom: 0px;
+                                            border-radius: 20px;
+                                            background-color: white;
+                                            justify-content: space-around;
+                                            transition: all 0.2s;
+                                            opacity: 0;
+                                            button {
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                height: 30px;
+                                                width: 30px;
+                                                cursor: pointer;
+                                                border-radius: 50%;
+                                                transition: all 0.4s;
+                                                &:hover {
+                                                    background-color: $orange-color;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .wrap-content {
+                                        text-align: center;
+                                        a {
+                                            color: #222;
+                                            display: block;
+                                            &:hover {
+                                                color: $orange-color;
+                                            }
+                                        }
+                                        .info {
+                                            margin: 10px 0;
+                                        }
+                                        span {
+                                            display: block;
+                                        }
+                                        .price {
+                                            color: $orange-color;
+                                            display: inline-block;
+                                            font-weight: 800;
+                                            margin-left: 5px;
+                                        }
+                                        .cost {
+                                            text-decoration: line-through;
+                                            display: inline-block;
+                                            color: #555;
+                                        }
+                                    }
+                                }
+                            }
+                            .owl-nav {
+                                button {
+                                    position: absolute;
+                                    top: 25%;
+                                    width: 60px;
+                                    height: 60px;
+                                    border-radius: 50%;
+                                    display: none;
+                                    align-items: center;
+                                    justify-content: center;
+                                    transition: all 0.3s;
+                                    span {
+                                        font-size: 40px;
+                                        font-weight: 500;
+                                        color: black;
+                                        transition: all 0.3s;
+                                    }
+                                }
+                                button.owl-prev {
+                                    left: -60px;
+                                    background-color: rgba(0, 0, 0, 0);
+                                    transition: all 0.3s;
+                                }
+                                button.owl-next {
+                                    right: -60px;
+                                    background-color: rgba(0, 0, 0, 0);
+                                    transition: all 0.3s;
+                                }
+                                button.owl-prev:not(.disabled):hover {
+                                    background-color: $orange-color;
+                                    span {
+                                        color: white;
+                                    }
+                                }
+                                button.owl-next:not(.disabled):hover {
+                                    background-color: $orange-color;
+                                    span {
+                                        color: white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            .deals-and-seller {
+                background-color: #f4f4f4;
+                font-family: Work Sans, Arial, Helvetica, sans-serif;
+                .deals-weeks {
+                    width: 350px;
+                    h2 {
+                        padding: 15px 0;
+                        background-color: $orange-color;
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                        text-align: center;
+                    }
+                    .content-deals-weeks {
+                        background-color: white;
+                        border-radius: 10px;
+                        padding-bottom: 50px;
+                        .wrap-img {
+                            img {
+                                padding: 20px;
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                        .infor-products {
+                            text-align: center;
+                            .price {
+                                color: $orange-color;
+                                font-size: 17px;
+                                font-weight: 600;
+                                line-height: 1;
+                            }
+                        }
+                        .countdown {
+                            display: flex;
+                            justify-content: space-evenly;
+                            .time {
+                                display: flex;
+                                flex-direction: column;
+                                text-align: center;
+                                padding: 10px 10px;
+                                border: 1px solid rgba($color: #333, $alpha: 0.1);
+                                span[class^="time-"] {
+                                    color: black;
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+                        button {
+                            margin-top: 30px;
+                            display: block;
+                            justify-content: center;
+                            transform: translateX(100%);
+                            // animation: animationSliderBtn 15s infinite;
+                            padding: 10px 20px;
+                            border-radius: 50px;
+                            background-color: $orange-color;
+                            a {
+                                color: white;
+                                font-weight: 700;
+                            }
+                            &:hover {
+                                background-color: black;
+                            }
+                        }
+                    }
+                }
+                .advertisement {
+                    position: relative;
+                    overflow: hidden;
+                    &:hover {
+                        img {
+                            transform: scale(1.02);
+                        }
+                    }
+                    .wrap-img {
+                        img {
+                            border-radius: 10px;
+                            transition: all 0.4s;
+                        }
+                    }
+                    .wrap-content {
+                        top: 40%;
+                        left: 10%;
+                        position: absolute;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                        a {
+                            color: black;
+                            font-weight: 600;
+                            &:hover {
+                                color: $orange-color;
+                            }
+                        }
+                        span {
+                            bottom: -5px;
+                            width: 20px;
+                            position: relative;
+                            display: inline-block;
+                            height: 20px;
+                            border-radius: 50%;
+                            background-color: $orange-color;
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                border-top: 5px solid transparent;
+                                border-bottom: 5px solid transparent;
+                                border-left: 5px solid white;
+                                left: 50%;
+                                top: 50%;
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                    }
+                }
+                .best__sellers {
+                    background-color: white;
+                    padding: 20px 15px 30px 15px;
+                    border-radius: 10px;
+                    position: relative;
+                    &:hover {
+                        .owl-nav {
+                            button {
+                                display: flex;
+                            }
+                        }
+                    }
+                    .item {
+                        div[class^="our__blog--item"] {
+                            justify-content: space-between;
+                            margin-bottom: 30px;
+                            margin-right: 20px;
+                            .wrap-img {
+                                width: 112px;
+                                height: 112px;
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                            .wrap-content {
+                                text-align: center;
+                                a {
+                                    color: #222;
+                                    display: block;
+                                    &:hover {
+                                        color: $orange-color;
+                                    }
+                                }
+                                .info {
+                                    margin: 10px 0;
+                                }
+                                span {
+                                    display: block;
+                                }
+                                .price {
+                                    color: $orange-color;
+                                    display: inline-block;
+                                    font-weight: 800;
+                                    margin-left: 5px;
+                                }
+                                .cost {
+                                    text-decoration: line-through;
+                                    display: inline-block;
+                                    color: #555;
+                                }
+                            }
+                        }
+                    }
+                    .owl-nav {
+                        button {
+                            position: absolute;
+                            top: -60px;
+                            left: 85%;
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            display: none;
+                            align-items: center;
+                            justify-content: center;
+                            transition: all 0.3s;
+                            span {
+                                margin: 1px 1 2px 0;
+                                font-size: 30px;
+                                font-weight: 500;
+                                color: black;
+                                transition: all 0.3s;
+                            }
+                        }
+                        button.owl-prev,
+                        button.owl-next {
+                            background-color: rgba(0, 0, 0, 0);
+                            transition: all 0.3s;
+                        }
+                        button.owl-next {
+                            margin-left: 50px;
+                        }
+                        button.owl-prev:not(.disabled):hover {
+                            background-color: $orange-color;
+                            span {
+                                color: white;
+                            }
+                        }
+                        button.owl-next:not(.disabled):hover {
+                            background-color: $orange-color;
+                            span {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            .btn-active {
+                background-color: $orange-color;
+            }
+            
+            .auth-and-cart {
+                font-size: 15px;
+                a {
+                    color: #222;
+                    span {
+                        &:hover {
+                            color: $orange-color;
+                        }
+                    }
+                }
+                .symbols {
+                    padding: 0px 5px;
+                }
+                .header__icon {
+                    width: 100%;
+                    .like-products,
+                    .cart {
+                        padding: 0 20px;
+                        font-size: 23px;
+                        position: relative;
+                        .amount-heart,
+                        .amount-products {
+                            position: absolute;
+                            top: 4px;
+                            right: -5px;
+                            width: 16px;
+                            height: 16px;
+                            display: flex;
+                            color: white;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: red;
+                            border-radius: 50%;
+                            font-size: 12px;
+                        }
+                        .synethic-products {
+                            position: absolute;
+                            font-size: 14px;
+                            top: 25px;
+                            right: 0px;
+                            z-index: 10;
+                            width: 350px;
+                            display: none;
+                            background-color: white;
+                            border: 1px solid $gray-border;
+                            padding: 30px;
+                            color: #222;
+                        }
+                    }
+                }
+            }
+            
+            .poster {
+                font-family: Work Sans, Arial, Helvetica, sans-serif;
+                .wrap-poster {
+                    &:hover {
+                        img {
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+                .poster__img {
+                    overflow: hidden;
+                    img {
+                        transition: all 0.4s;
+                    }
+                }
+                .poster__content {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 30%;
+                    left: 10%;
+                    .poster__content--detail {
+                        h3 {
+                            color: #464646;
+                            font-weight: 700;
+                            font-size: 28px;
+                        }
+                        a {
+                            color: black;
+                            font-weight: 600;
+                            &:hover {
+                                color: $orange-color;
+                            }
+                        }
+                        span {
+                            bottom: -5px;
+                            width: 20px;
+                            position: relative;
+                            display: inline-block;
+                            height: 20px;
+                            border-radius: 50%;
+                            background-color: $orange-color;
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                border-top: 5px solid transparent;
+                                border-bottom: 5px solid transparent;
+                                border-left: 5px solid white;
+                                left: 50%;
+                                top: 50%;
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                    }
+                }
+            }
+            
+            .sellers-products {
+                .wrap-product {
+                    position: relative;
+                    &:hover {
+                        .sticker-status {
+                            transform: translateY(-35px);
+                            opacity: 1 !important;
+                        }
+                    }
+                    .wrap-img {
+                        .sale-icon {
+                            position: absolute;
+                            top: 10px;
+                            left: 10px;
+                            height: 40px;
+                            width: 40px;
+                            font-size: 14px;
+                            background-color: $orange-color;
+                            border-radius: 50%;
+                            color: white;
+                        }
+                        .sticker-status {
+                            background-color: white;
+                            position: absolute;
+                            left: 20%;
+                            bottom: 55px;
+                            border-radius: 20px;
+                            background-color: white;
+                            justify-content: space-around;
+                            transition: all 0.2s;
+                            opacity: 0;
+                            button {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                height: 30px;
+                                width: 30px;
+                                cursor: pointer;
+                                border-radius: 50%;
+                                transition: all 0.4s;
+                                &:hover {
+                                    background-color: $orange-color;
+                                }
+                            }
+                        }
+                    }
+                    .wrap-content {
+                        text-align: center;
+                        a {
+                            color: #222;
+                            display: block;
+                            &:hover {
+                                color: $orange-color;
+                            }
+                        }
+                        .info {
+                            margin: 10px 0;
+                        }
+                        span {
+                            display: block;
+                        }
+                        .price {
+                            color: $orange-color;
+                            display: inline-block;
+                            font-weight: 800;
+                            margin-left: 5px;
+                        }
+                        .cost {
+                            text-decoration: line-through;
+                            display: inline-block;
+                            color: #555;
+                        }
+                    }
+                }
+            }
+            
+            .our-products {
+                margin-top: 30px;
+                border-radius: 20px;
+                background-color: white;
+                #our-products {
+                    &:hover {
+                        button.slick-arrow {
+                            display: block !important;
+                        }
+                    }
+                    padding: 20px 10px;
+                    .item {
+                        position: relative;
+                        &:hover {
+                            .sticker-status {
+                                transform: translateY(-35px);
+                                opacity: 1 !important;
+                            }
+                        }
+                        .wrap-img {
+                            .sale-icon {
+                                position: absolute;
+                                top: 10px;
+                                left: 10px;
+                                height: 40px;
+                                width: 40px;
+                                font-size: 14px;
+                                background-color: $orange-color;
+                                border-radius: 50%;
+                                color: white;
+                            }
+                            .sticker-status {
+                                background-color: white;
+                                position: absolute;
+                                left: 20%;
+                                bottom: 55px;
+                                border-radius: 20px;
+                                background-color: white;
+                                justify-content: space-around;
+                                transition: all 0.2s;
+                                opacity: 0;
+                                button {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    height: 30px;
+                                    width: 30px;
+                                    cursor: pointer;
+                                    border-radius: 50%;
+                                    transition: all 0.4s;
+                                    &:hover {
+                                        background-color: $orange-color;
+                                    }
+                                }
+                            }
+                        }
+                        .wrap-content {
+                            text-align: center;
+                            a {
+                                color: #222;
+                                display: block;
+                                &:hover {
+                                    color: $orange-color;
+                                }
+                            }
+                            .info {
+                                margin: 10px 0;
+                            }
+                            span {
+                                display: block;
+                            }
+                            .price {
+                                color: $orange-color;
+                                display: inline-block;
+                                font-weight: 800;
+                                margin-left: 5px;
+                            }
+                            .cost {
+                                text-decoration: line-through;
+                                display: inline-block;
+                                color: #555;
+                            }
+                        }
+                    }
+                    button.slick-arrow {
+                        position: absolute;
+                        top: -15px;
+                        display: none !important;
+                        transition: all 0.3s;
+                    }
+                    button.slick-next {
+                        margin-right: 50px;
+                    }
+                    button.slick-prev {
+                        left: 85%;
+                        z-index: 9;
+                    }
+                    .slick-next:before,
+                    .slick-prev:before {
+                        color: black;
+                        font-size: 28px;
+                        font-weight: 500;
+                    }
+                }
+            }
+            
+            .from-our-blog {
+                position: relative;
+                .item {
+                    .wrap-img {}
+                    .wrap-content {
+                        h4 {
+                            letter-spacing: 1px;
+                        }
+                        button {
+                            width: 100%;
+                            padding: 15px 0;
+                            background-color: #222;
+                            &:hover {
+                                background-color: $orange-color;
+                            }
+                        }
+                    }
+                }
+                .owl-nav {
+                    button {
+                        position: absolute;
+                        top: 45%;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50% !important;
+                        span {
+                            font-size: 40px;
+                        }
+                    }
+                    button.owl-prev {
+                        left: -60px;
+                        background-color: rgba(0, 0, 0, 0);
+                        transition: all 0.3s;
+                    }
+                    button.owl-next {
+                        right: -60px;
+                        background-color: rgba(0, 0, 0, 0);
+                        transition: all 0.3s;
+                    }
+                    button.owl-prev:not(.disabled):hover {
+                        background-color: $orange-color;
+                        span {
+                            color: white;
+                        }
+                    }
+                    button.owl-next:not(.disabled):hover {
+                        background-color: $orange-color;
+                        span {
+                            color: white;
+                        }
+                    }
+                }
+            }
+            
+            .sale-black-friday {
+                position: relative;
+                overflow: hidden;
+                &:hover {
+                    img {
+                        transform: scale(1.01);
+                    }
+                }
+                .wrap-img {
+                    img {
+                        transition: all 0.3s;
+                    }
+                }
+                .wrap-content {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 50px;
+                }
+            }
+            
+            .synthetic {
+                margin-right: 60px;
+                .wrap-img {
+                    width: 112px;
+                    height: 112px;
+                    img {
+                        width: 100%;
+                    }
+                }
+                .wrap-content {
+                    text-align: center;
+                    a {
+                        color: #222;
+                        display: block;
+                        &:hover {
+                            color: $orange-color;
+                        }
+                    }
+                    .info {
+                        margin: 10px 0;
+                    }
+                    span {
+                        display: block;
+                    }
+                    .price {
+                        color: $orange-color;
+                        display: inline-block;
+                        font-weight: 800;
+                        margin-left: 5px;
+                    }
+                    .cost {
+                        text-decoration: line-through;
+                        display: inline-block;
+                        color: #555;
+                    }
+                }
+            }
+            
+            .brand {
+                border: 1px solid rgba($color: #333, $alpha: 0.3);
+                padding: 30px 0px;
+                img {
+                    transition: all 0.4s;
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+            
+            footer {
+                .safira-footer {
+                    border-bottom: 1px solid rgba($color: white, $alpha: 0.3);
+                    .safira-overview {
+                        .sub-form {
+                            input {
+                                padding: 15px 30px;
+                                background-color: white;
+                                border-bottom-left-radius: 20px;
+                                border-top-left-radius: 20px;
+                            }
+                            button {
+                                background-color: $orange-color;
+                                padding: 15px 20px;
+                                margin-left: -7px;
+                                border-top-right-radius: 20px;
+                                border-bottom-right-radius: 20px;
+                                transition: all 0.3s;
+                                &:hover {
+                                    background-color: black;
+                                }
+                            }
+                        }
+                    }
+                    .safira-contact {}
+                }
+            }
+            
+            .modal {
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 9;
+                &-content {
+                    background-color: white;
+                    border-radius: 5px;
+                    box-shadow: 0px 0px 15px rgba(0, 0, 0, .5);
+                }
+                &-header {
+                    position: relative;
+                    text-align: center;
+                    border-bottom: 1px solid rgba($color: #333, $alpha: 0.3);
+                    h3 {
+                        padding: 15px 30px;
+                    }
+                    span {
+                        top: 5px;
+                        right: 5px;
+                        position: absolute;
+                        background-color: #f4f4f4;
+                        display: flex;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        align-items: center;
+                        transition: all 0.3s;
+                        justify-content: center;
+                        i {}
+                        &:hover {
+                            background-color: $orange-color;
+                        }
+                    }
+                }
+                &-body {
+                    .wrap-product {
+                        .wrap-img {}
+                        .wrap-content {}
+                    }
+                }
+                &-footer {
+                    justify-content: flex-end;
+                    background-color: #f4f4f4;
+                    button {
+                        margin-right: 10px;
+                        padding: 12px 24px;
+                        border-radius: 25px;
+                        transition: all 0.3s;
+                        background-color: $orange-color;
+                        &:hover {
+                            background-color: #222;
+                        }
+                    }
+                }
+            }
+            
+            .modal-heart {
+                cursor: default;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 10;
+                .modal-heart-content {
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                }
+            }
+            
+            .cart {
+                .synethic-products {
+                    height: auto !important;
+                    ul {
+                        li {
+                            position: relative;
+                            .delete-item {
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                            }
+                            .item {
+                                .wrap-img {
+                                    img {
+                                        width: 82px !important;
+                                    }
+                                }
+                                border-bottom: 1px solid rgba($color: #333, $alpha: 0.3);
+                            }
+                            .btn-view-check {
+                                button {
+                                    padding: 15px 30px;
+                                    background-color: $orange-color;
+                                    transition: all 0.3s;
+                                    border-radius: 25px;
+                                    &:hover {
+                                        background-color: #222;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
