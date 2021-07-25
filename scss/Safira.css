@@ -529,6 +529,10 @@
   color: white !important;
 }
 
+.gray-color {
+  color: #666;
+}
+
 .bg-black {
   background-color: #222;
 }
@@ -605,6 +609,10 @@
   margin-left: 80px;
 }
 
+.mr-10 {
+  margin-right: 10px;
+}
+
 .mb-10 {
   margin-bottom: 10px;
 }
@@ -659,6 +667,14 @@
 
 .pb-50 {
   padding-bottom: 50px;
+}
+
+.p-10-20 {
+  padding: 10px 20px;
+}
+
+.p-15-30 {
+  padding: 15px 30px;
 }
 
 .font-1 {
@@ -2530,6 +2546,8 @@ main .container .new-products .content-products .owl-nav button.owl-next:not(.di
   right: 0px;
   z-index: 10;
   width: 350px;
+  max-height: 450px;
+  overflow-x: hidden;
   display: none;
   background-color: white;
   border: 1px solid #e7e7e7;
@@ -3075,7 +3093,8 @@ footer .safira-footer .safira-overview .sub-form button:hover {
 }
 
 .cart .synethic-products {
-  height: auto !important;
+  max-height: 450px;
+  overflow-x: hidden;
 }
 
 .cart .synethic-products ul li {

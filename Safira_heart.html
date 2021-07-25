@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="scss/reset.css">
     <link rel="stylesheet" href="scss/Safira.css">
-    <link rel="stylesheet" href="scss/Safira_cart.css">
+    <link rel="stylesheet" href="scss/Safira_heart.css">
     <!--import javascripts-->
 
 </head>
@@ -430,18 +430,17 @@
                     <div class="header__icon a-center d-flex">
                         <div class=" like-products">
                             <a href=""><i class="far fa-heart"></i></a>
-                            <a href=""><span class="amount-heart">1</span></a>
+                            <a href=""><span class="amount-heart">0</span></a>
                         </div>
-                        <!-- <div class="cart">
-                            <a href=""><i class="fas fa-shopping-cart"></i></a>
+                        <div class="cart">
+                            <a href="./Safira_cart.html" onclick="window.open(this.href,'_blank');return false;" target="_blank"><i class="fas fa-shopping-cart"></i></a>
                             <a href=""><span class="amount-products">0</span></a>
                             <div class="synethic-products">
                                 <ul>
                                     <li>No products</li>
-
                                 </ul>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -463,8 +462,9 @@
         </div>
         <div class="wishlist mb-80">
             <div class="container">
-                <h2 class="text-center mb-15">Cart</h2>
-                <h5 class="text-center mb-50"><a class="mr-10" href="">Home<a>/<a class="ml-10" href="">Cart</a></h5>
+                <h2 class="text-center mb-15 font-1">Wishlist</h2>
+                <h5 class="text-center mb-50 font-1 gray-color fw-500"><a class="mr-10 gray-color fw-500" href="">Home<a>/<a class="ml-10 gray-color fw-500" href="">Wishlist</a></h5>
+                <h4 class="mb-10 font-1 f-20">My Wishlist</h4>
                 <table>
                     <!-- <tr class="">
                         <th></th>
@@ -554,7 +554,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-<script src="js/Safira_cart.js"></script>
+<script src="js/Safira_heart.js"></script>
 <script src="js/animation.js"></script>
 
 </html>

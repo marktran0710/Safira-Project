@@ -1,4 +1,5 @@
 $orange-color:#fc8a35;
+$gray-color:#666;
 $gray-border:#e7e7e7;
 .primary-color {
     color: $orange-color;
@@ -30,6 +31,10 @@ $gray-border:#e7e7e7;
 
 .white-color {
     color: white !important;
+}
+
+.gray-color {
+    color: $gray-color;
 }
 
 .bg-black {

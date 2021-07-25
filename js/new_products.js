@@ -1,12 +1,3 @@
-var products = [];
-let sProducts = [];
-let subArrray = [];
-
-const cart = [];
-const arrayHeart = [];
-
-
-
 $(document).ready(function() {
     $('#caro-slider .owl-carousel').owlCarousel({
         loop: true,

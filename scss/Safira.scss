@@ -1445,6 +1445,8 @@
                             right: 0px;
                             z-index: 10;
                             width: 350px;
+                            max-height: 450px;
+                            overflow-x: hidden;
                             display: none;
                             background-color: white;
                             border: 1px solid $gray-border;
@@ -1917,7 +1919,8 @@
             
             .cart {
                 .synethic-products {
-                    height: auto !important;
+                    max-height: 450px;
+                    overflow-x: hidden;
                     ul {
                         li {
                             position: relative;

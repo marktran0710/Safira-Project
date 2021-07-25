@@ -1,27 +1,18 @@
-// const element = document.getElementsByClassName("title-animation");
-$(window).scroll(function() {
-    const currenPos = $(this).scrollTop();
-    if (currenPos > 200) {
-        $(".totop").addClass("fixed");
-        $(".header__ware").fadeIn();
+var products = [];
+let sProducts = [];
+let subArrray = [];
 
-    } else {
-        $(".totop").removeClass("fixed");
-        $(".header__ware").css("display", "none");
-
-
+const cart = [];
+const arrayHeart = [];
+$.get(
+    "https://res.cloudinary.com/sivadass/raw/upload/v1535817394/json/products.json",
+    (data) => {
+        subArrray = data;
+        sProducts = data;
+        products = data;
+        renderProduct(data);
     }
-});
-
-$(".totop").click(function(e) {
-    e.preventDefault();
-    $("body,html").animate({
-            scrollTop: 0,
-        },
-        "easeInQuint"
-    );
-});
-
+);
 $("button.filter").click(function(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -29,6 +20,15 @@ $("button.filter").click(function(e) {
 });
 
 
+$(document).on("click", ".delete-item", function() {
+    const id = $(this).parents("li").data("id");
+    console.log(id);
+    const idx = cart.findIndex((val) => val.id === id);
+    cart.splice(idx, 1);
+    renderCart(cart);
+    localStorage.setItem("selectedCart", JSON.stringify(cart));
+
+});
 
 $("#header__scroll--menu").click(function(e) {
     e.preventDefault();
@@ -41,15 +41,6 @@ $("body").click(function(e) {
     $("#header__scroll--menu").css("display", "none");
 });
 
-$.get(
-    "https://res.cloudinary.com/sivadass/raw/upload/v1535817394/json/products.json",
-    (data) => {
-        subArrray = data;
-        sProducts = data;
-        products = data;
-        renderProduct(data);
-    }
-);
 $(".wrap-search-box .search").keyup(function(e) {
 
     const inputValue = $(this).val().toLowerCase();
@@ -271,13 +262,6 @@ $(".modal-content").click(function(e) {
     e.preventDefault();
     e.stopPropagation();
 });
-$(document).on("click", ".delete-item", function() {
-    const id = $(this).parents("li").data("id");
-    const idx = cart.findIndex((val) => val.id === id);
-    cart.splice(idx, 1);
-    renderCart(cart);
-
-});
 
 $(document).on("click", ".add--shopping", function() {
     $(".modal").css("display", "flex");
@@ -304,18 +288,15 @@ $(document).on("click", ".add--shopping", function() {
         </div>`).appendTo(".modal-body");
     }
     renderCart(cart);
-
-
+    localStorage.setItem("selectedCart", JSON.stringify(cart));
 });
-
-
 
 function renderCart(cart) {
     let total = 0;
     $(".synethic-products ul").empty();
     cart.map((val) => {
         total = val.price * val.quantity + total;
-        $(`<li class="mb-10">
+        $(`<li class="mb-10" data-id=${val.id}>
         <i class="fas fa-times delete-item"></i>
         <div class="item d-flex">
             <div class="wrap-img">
@@ -343,11 +324,16 @@ function renderCart(cart) {
     } else {
         $(`<li>No products</li>`).appendTo(".synethic-products ul");
     }
-    amount_cart = cart.reduce((acc, val, index) => {
+    var amount_cart = cart.reduce((acc, val, index) => {
         return acc += val.quantity;
     }, 0);
     $(".amount-products").text(amount_cart);
+
 }
+
+
+
+
 
 function renderProduct(subArrray) {
     $("#products .owl-carousel").empty();
@@ -540,39 +526,6 @@ function renderProduct(subArrray) {
 }
 
 
-
-var noti = document.querySelector(".amount-heart");
-console.log(noti);
-var btn = document.querySelectorAll("button.btn.heart");
-console.log(btn)
-var count = $(".amount-heart").text();
-$("button.btn.heart").click(function(e) {
-    e.preventDefault();
-
-    count++;
-    $(".amount-heart").text(`${count}`);
-    $(this).css("background-color", "red");
-
-});
-let moveDropDown = () => {
-    $("#header-dropdown-lang").hover(function() {
-        $(".lang").slideToggle();
-    });
-    $("#header-dropdown-eng").hover(function() {
-        $(".curren").slideToggle();
-
-    });
-    $(".cart").hover(function() {
-            $(".synethic-products").stop(true, false, true).slideDown(500)
-        },
-        function() {
-            $(".synethic-products").stop(true, false, true).slideUp(300);
-        }
-
-    );
-
-}
-
 $("button .title").click(function(e) {
     e.preventDefault();
     $(".vertical-nav .list-content").toggle(200);
@@ -580,7 +533,7 @@ $("button .title").click(function(e) {
 });
 
 
-moveDropDown();
+
 const deadline = "2021/06/01"
 
 function getTime(deadline) {

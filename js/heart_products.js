@@ -9,7 +9,10 @@ $(document).on("click", ".add--heart", function() {
         $(".amount-heart").text(arrayHeart.length);
     }
     $(".modal-heart").addClass("d-flex");
+    console.log(arrayHeart);
+    localStorage.setItem("selectedHeart", JSON.stringify(arrayHeart));
 });
+
 
 $("body").click(function(e) {
     e.preventDefault();
