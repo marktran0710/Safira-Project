@@ -5,55 +5,50 @@ let subArrray = [];
 const cart = [];
 const arrayHeart = [];
 $.get(
-    "https://res.cloudinary.com/sivadass/raw/upload/v1535817394/json/products.json",
-    (data) => {
-        subArrray = data;
-        sProducts = data;
-        products = data;
-        renderProduct(data);
-    }
+  "https://res.cloudinary.com/sivadass/raw/upload/v1535817394/json/products.json",
+  (data) => {
+    subArrray = data;
+    sProducts = data;
+    products = data;
+    renderProduct(data);
+  }
 );
-$("button.filter").click(function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $("#header__scroll--menu").css("display", "block");
+
+$(".scrollable-menu  >.filter").click(function (e) {
+  $("#header__scroll--menu").toggle();
+});
+// $("button .filter").click(function (e) {
+//   e.preventDefault();
+//   e.stopPropagation();
+//   $("#header__scroll--menu").css("background", "black");
+// });
+
+$(document).on("click", ".delete-item", function () {
+  const id = $(this).parents("li").data("id");
+  console.log(id);
+  const idx = cart.findIndex((val) => val.id === id);
+  cart.splice(idx, 1);
+  renderCart(cart);
+  localStorage.setItem("selectedCart", JSON.stringify(cart));
 });
 
+// $("body").click(function (e) {
+//   e.preventDefault();
+//   $("#header__scroll--menu").css("display", "none");
+// });
 
-$(document).on("click", ".delete-item", function() {
-    const id = $(this).parents("li").data("id");
-    console.log(id);
-    const idx = cart.findIndex((val) => val.id === id);
-    cart.splice(idx, 1);
-    renderCart(cart);
-    localStorage.setItem("selectedCart", JSON.stringify(cart));
-
-});
-
-$("#header__scroll--menu").click(function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-});
-
-$("body").click(function(e) {
-    e.preventDefault();
-    $("#header__scroll--menu").css("display", "none");
-});
-
-$(".wrap-search-box .search").keyup(function(e) {
-
-    const inputValue = $(this).val().toLowerCase();
-    const searchProducts = sProducts.filter((val) =>
-        val.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    // console.log($(this).val().toLowerCase().length);
-    if (inputValue.length > 0) {
-        $(".nav-and-slider .right").empty();
-        $(`<div class="wrap-item d-flex f-wrap">
+$(".wrap-search-box .search").keyup(function (e) {
+  const inputValue = $(this).val().toLowerCase();
+  const searchProducts = sProducts.filter((val) =>
+    val.name.toLowerCase().includes(inputValue.toLowerCase())
+  );
+  // console.log($(this).val().toLowerCase().length);
+  if (inputValue.length > 0) {
+    $(".nav-and-slider .right").empty();
+    $(`<div class="wrap-item d-flex f-wrap">
         </div>`).appendTo(".nav-and-slider .right");
-        searchProducts.map((val) => {
-            $(`<div class="item ml-20" data-id=${val.id} style="width:30%">
+    searchProducts.map((val) => {
+      $(`<div class="item ml-20" data-id=${val.id} style="width:30%">
             <div class="wrap-product">
                 <div class="wrap-img">
                     <img style="width: 100%;" src=${val.image} alt="">
@@ -73,11 +68,11 @@ $(".wrap-search-box .search").keyup(function(e) {
                 </div>
             </div>
         </div>`).appendTo(".nav-and-slider .right .wrap-item");
-        });
-    }
-    if (inputValue.length === 0) {
-        $(".nav-and-slider .right").empty();
-        $(`<div class="horizen-nav">
+    });
+  }
+  if (inputValue.length === 0) {
+    $(".nav-and-slider .right").empty();
+    $(`<div class="horizen-nav">
         <ul class="d-flex">
             <li>
                 <a href="" style="color: #fc8a35;"><span >Home</span>
@@ -237,44 +232,43 @@ $(".wrap-search-box .search").keyup(function(e) {
             </div>
         </div>
     </div>`).appendTo(".nav-and-slider .right");
-        $('#caro-slider .owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            autoplay: true,
-            smartSpeed: 800,
-            autoplayTimeout: 10000,
-            items: 1,
-        });
-    }
-    // renderCart(cart);
+    $("#caro-slider .owl-carousel").owlCarousel({
+      loop: true,
+      margin: 10,
+      autoplay: true,
+      smartSpeed: 800,
+      autoplayTimeout: 10000,
+      items: 1,
+    });
+  }
+  // renderCart(cart);
 });
 
-$(".close-modal").click(function(e) {
-    e.preventDefault();
-    $(".modal").css("display", "none");
+$(".close-modal").click(function (e) {
+  e.preventDefault();
+  $(".modal").css("display", "none");
 });
 
-$("body").click(function(e) {
-    e.preventDefault();
-    $(".modal").css("display", "none");
+$("body").click(function (e) {
+  e.preventDefault();
+  $(".modal").css("display", "none");
 });
-$(".modal-content").click(function(e) {
-    e.preventDefault();
-    e.stopPropagation();
+$(".modal-content").click(function (e) {
+  e.preventDefault();
+  e.stopPropagation();
 });
 
-$(document).on("click", ".add--shopping", function() {
-    $(".modal").css("display", "flex");
-    const id = $(this).parents(".item").data("id");
-    const idx = cart.findIndex((val) => val.id === id);
-    if (idx !== -1) {
-        cart[idx].quantity = cart[idx].quantity + 1;
-
-    } else {
-        $(".modal-body").empty();
-        const item = products.find((val) => val.id == id);
-        cart.push({...item, quantity: 1 });
-        $(`<div class="item">
+$(document).on("click", ".add--shopping", function () {
+  $(".modal").css("display", "flex");
+  const id = $(this).parents(".item").data("id");
+  const idx = cart.findIndex((val) => val.id === id);
+  if (idx !== -1) {
+    cart[idx].quantity = cart[idx].quantity + 1;
+  } else {
+    $(".modal-body").empty();
+    const item = products.find((val) => val.id == id);
+    cart.push({ ...item, quantity: 1 });
+    $(`<div class="item">
         <div class="wrap-product d-flex a-center">
             <div class="wrap-img img-logo">
                 <img style="width: 100%;height: 100%;" src=${item.image} alt="">
@@ -286,17 +280,17 @@ $(document).on("click", ".add--shopping", function() {
             </div>
         </div>
         </div>`).appendTo(".modal-body");
-    }
-    renderCart(cart);
-    localStorage.setItem("selectedCart", JSON.stringify(cart));
+  }
+  renderCart(cart);
+  localStorage.setItem("selectedCart", JSON.stringify(cart));
 });
 
 function renderCart(cart) {
-    let total = 0;
-    $(".synethic-products ul").empty();
-    cart.map((val) => {
-        total = val.price * val.quantity + total;
-        $(`<li class="mb-10" data-id=${val.id}>
+  let total = 0;
+  $(".synethic-products ul").empty();
+  cart.map((val) => {
+    total = val.price * val.quantity + total;
+    $(`<li class="mb-10" data-id=${val.id}>
         <i class="fas fa-times delete-item"></i>
         <div class="item d-flex">
             <div class="wrap-img">
@@ -309,9 +303,9 @@ function renderCart(cart) {
             </div>
         </div>
         </li>`).appendTo(".synethic-products ul");
-    });
-    if (cart.length > 0) {
-        $(`<li>
+  });
+  if (cart.length > 0) {
+    $(`<li>
     <div class="subtotal d-flex j-between">
             <span>Subtotal:</span>
             <span class="fw-600 f-20">$${total}.00</span>
@@ -321,28 +315,23 @@ function renderCart(cart) {
             <button><a class="white-color" href="">CHECK OUT</a></button>
     </div>
     </li>`).appendTo(".synethic-products ul");
-    } else {
-        $(`<li>No products</li>`).appendTo(".synethic-products ul");
-    }
-    var amount_cart = cart.reduce((acc, val, index) => {
-        return acc += val.quantity;
-    }, 0);
-    $(".amount-products").text(amount_cart);
-
+  } else {
+    $(`<li>No products</li>`).appendTo(".synethic-products ul");
+  }
+  var amount_cart = cart.reduce((acc, val, index) => {
+    return (acc += val.quantity);
+  }, 0);
+  $(".amount-products").text(amount_cart);
 }
 
-
-
-
-
 function renderProduct(subArrray) {
-    $("#products .owl-carousel").empty();
-    subArrray.map((val) => {
-        if (val.price == 85 || val.price == 60) {
-            $(`<div class="item"data-id=${val.id}>
+  $("#products .owl-carousel").empty();
+  subArrray.map((val) => {
+    if (val.price == 85 || val.price == 60) {
+      $(`<div class="item"data-id=${val.id}>
                 <div class="wrap-product">
                     <div class="wrap-img">
-                        <img style="width: 100%;height: 100%;" src=${val.image} alt="">
+                        <img style="width: 100%;height: auto;" src=${val.image} alt="">
                         <span class="sale-icon d-flex a-center j-center">Sale!</span>
                         <div class="sticker-status d-flex">
                         <button class="btn shopping--cart add--shopping"><i class="fas fa-shopping-cart"></i></button>
@@ -357,12 +346,12 @@ function renderProduct(subArrray) {
                         <span class="price">$${val.price}.00</span>
                     </div>
                 </div>
-            </div>`).appendTo('#products .owl-carousel');
-        } else {
-            $(`<div class="item" data-id=${val.id}>
+            </div>`).appendTo("#products .owl-carousel");
+    } else {
+      $(`<div class="item" data-id=${val.id}>
                 <div class="wrap-product">
                     <div class="wrap-img">
-                        <img style="width: 100%;height: 100%;" src=${val.image} alt="">                      
+                        <img style="width: 100%;height: auto;" src=${val.image} alt="">                      
                         <div class="sticker-status d-flex">
                         <button class="btn shopping--cart add--shopping"><i class="fas fa-shopping-cart"></i></button>
                         <button class="btn heart add--heart"><i class="fas fa-heart"></i></button>
@@ -376,16 +365,15 @@ function renderProduct(subArrray) {
                         <span class="price">$${val.price}.00</span>
                     </div>
                 </div>
-            </div>`).appendTo('#products .owl-carousel');
-        }
-
-    });
-    $(".our__blog--item1").empty();
-    let count = 0;
-    subArrray.filter((val, index) => {
-        if (val.price < 80 && count < 2) {
-            count++;
-            $(`
+            </div>`).appendTo("#products .owl-carousel");
+    }
+  });
+  $(".our__blog--item1").empty();
+  let count = 0;
+  subArrray.filter((val, index) => {
+    if (val.price < 80 && count < 2) {
+      count++;
+      $(`
             <div class="wrap-product d-flex a-center ">
             <div class="wrap-img">
                 <img src=${val.image} alt="">
@@ -397,15 +385,15 @@ function renderProduct(subArrray) {
                 <span class="price"> ${val.price}.00$</span>
             </div>
         </div>
-    `).appendTo('.our__blog--item1');
-        }
-    })
-    $(".our__blog--item2").empty();
-    count = 0;
-    subArrray.filter((val, index) => {
-        if (val.price > 150 && count < 2) {
-            count++;
-            $(`
+    `).appendTo(".our__blog--item1");
+    }
+  });
+  $(".our__blog--item2").empty();
+  count = 0;
+  subArrray.filter((val, index) => {
+    if (val.price > 150 && count < 2) {
+      count++;
+      $(`
             <div class="wrap-product d-flex a-center">
             <div class="wrap-img">
                 <img src=${val.image} alt="">
@@ -417,15 +405,15 @@ function renderProduct(subArrray) {
                 <span class="price">${val.price}.00$</span>
             </div>
         </div>
-    `).appendTo('.our__blog--item2');
-        }
-    })
-    $(".our__blog--item3").empty();
-    count = 0;
-    subArrray.filter((val, index) => {
-        if (val.price < 50 && count < 2) {
-            count++;
-            $(`
+    `).appendTo(".our__blog--item2");
+    }
+  });
+  $(".our__blog--item3").empty();
+  count = 0;
+  subArrray.filter((val, index) => {
+    if (val.price < 50 && count < 2) {
+      count++;
+      $(`
             <div class="wrap-product d-flex a-center">
             <div class="wrap-img">
                 <img src=${val.image} alt="">
@@ -437,15 +425,15 @@ function renderProduct(subArrray) {
                 <span class="price"> ${val.price}.00$</span>
             </div>
         </div>
-    `).appendTo('.our__blog--item3');
-        }
-    })
-    $(".our__blog--item4").empty();
-    count = 0;
-    subArrray.filter((val, index) => {
-        if (val.price > 80 && val.price < 150 && count < 2) {
-            count++;
-            $(`
+    `).appendTo(".our__blog--item3");
+    }
+  });
+  $(".our__blog--item4").empty();
+  count = 0;
+  subArrray.filter((val, index) => {
+    if (val.price > 80 && val.price < 150 && count < 2) {
+      count++;
+      $(`
             <div class="wrap-product d-flex a-center">
             <div class="wrap-img">
                 <img src=${val.image} alt="">
@@ -457,13 +445,13 @@ function renderProduct(subArrray) {
                 <span class="price">${val.price}.00$</span>
             </div>
         </div>
-    `).appendTo('.our__blog--item4');
-        }
-    });
-    $("#our-products").empty();
-    subArrray.map((val) => {
-        if (val.price == 85 || val.price == 60) {
-            $(`<div class="item"data-id=${val.id}>
+    `).appendTo(".our__blog--item4");
+    }
+  });
+  $("#our-products").empty();
+  subArrray.map((val) => {
+    if (val.price == 85 || val.price == 60) {
+      $(`<div class="item"data-id=${val.id}>
                 <div class="wrap-product">
                     <div class="wrap-img">
                         <img style="width: 100%;height: 100%;" src=${val.image} alt="">
@@ -481,9 +469,9 @@ function renderProduct(subArrray) {
                         <span class="price">$${val.price}.00</span>
                     </div>
                 </div>
-            </div>`).appendTo('#our-products');
-        } else {
-            $(`<div class="item" data-id=${val.id}>
+            </div>`).appendTo("#our-products");
+    } else {
+      $(`<div class="item" data-id=${val.id}>
                 <div class="wrap-product">
                     <div class="wrap-img">
                         <img style="width: 100%;height: 100%;" src=${val.image} alt="">                      
@@ -500,16 +488,14 @@ function renderProduct(subArrray) {
                         <span class="price">$${val.price}.00</span>
                     </div>
                 </div>
-            </div>`).appendTo('#our-products');
-        }
-
-    });
-    count = 0;
-    subArrray.filter((val, index) => {
-
-        if (val.price <= 200 && count < 9) {
-            count++;
-            return $(`<div class="wrap-product d-flex  mt-10">
+            </div>`).appendTo("#our-products");
+    }
+  });
+  count = 0;
+  subArrray.filter((val, index) => {
+    if (val.price <= 200 && count < 9) {
+      count++;
+      return $(`<div class="wrap-product d-flex  mt-10">
             <div class="wrap-img">
                 <img src=${val.image} alt="">
             </div>
@@ -520,53 +506,48 @@ function renderProduct(subArrray) {
                 <span class="price"> $${val.price}.00</span>
             </div>
         </div>`).appendTo(".synthetic__content");
-        }
-    })
-
+    }
+  });
 }
 
-
-$("button .title").click(function(e) {
-    e.preventDefault();
-    $(".vertical-nav .list-content").toggle(200);
-
+$("button .title").click(function (e) {
+  e.preventDefault();
+  $(".vertical-nav .list-content").toggle(200);
 });
 
-
-
-const deadline = "2021/06/01"
+const deadline = "2021/06/01";
 
 function getTime(deadline) {
-    //const now =Date.now()
-    const now = new Date();
-    const deadlinDate = new Date(deadline);
+  //const now =Date.now()
+  const now = new Date();
+  const deadlinDate = new Date(deadline);
 
+  //khoang cahc giua 2 ngay
 
-    //khoang cahc giua 2 ngay
+  const distant = (deadlinDate - now) / 1000;
+  //Days
+  const days = Math.floor(distant / 3600 / 24);
 
-    const distant = (deadlinDate - now) / 1000;
-    //Days
-    const days = Math.floor(distant / 3600 / 24);
+  //hours
+  const hours = Math.floor(distant / 3600) % 24;
 
+  //mins
+  const mins = Math.floor(distant / 60) % 60;
 
-    //hours
-    const hours = Math.floor(distant / 3600) % 24;
+  //secs
+  const secs = Math.floor(
+    distant - (days * 3600 * 24 + hours * 3600 + mins * 60)
+  );
+  $(".time-days").text(formatTime(days));
+  $(".time-hours").text(formatTime(hours));
+  $(".time-mins").text(formatTime(mins));
+  $(".time-secs").text(formatTime(secs));
 
-    //mins
-    const mins = Math.floor(distant / 60) % 60;
-
-    //secs
-    const secs = Math.floor(distant - (days * 3600 * 24 + hours * 3600 + mins * 60));
-    $(".time-days").text(formatTime(days));
-    $(".time-hours").text(formatTime(hours));
-    $(".time-mins").text(formatTime(mins));
-    $(".time-secs").text(formatTime(secs));
-
-    function formatTime(time) {
-        return `0${time}`.slice(-2);
-    }
+  function formatTime(time) {
+    return `0${time}`.slice(-2);
+  }
 }
 getTime(deadline);
 setInterval(() => {
-    getTime(deadline);
+  getTime(deadline);
 }, 1000);

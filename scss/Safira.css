@@ -719,7 +719,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -2519,10 +2519,10 @@ main .container .new-products .content-products .owl-nav button.owl-next:not(.di
 .auth-and-cart .header__icon .cart .amount-heart,
 .auth-and-cart .header__icon .cart .amount-products {
   position: absolute;
-  top: 4px;
-  right: -5px;
-  width: 16px;
-  height: 16px;
+  top: 0px;
+  right: 10px;
+  width: 15px;
+  height: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
